@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/home/Phoenix/MPLABProjects/Projekt1/_build/Projekt1/default",
+  "command": "/opt/microchip/xc8/v4.00/bin/xc8-cc -DXPRJ_default=default -D__ATmega328PB__ -c -mcpu=ATmega328PB -x c -mdfp=/home/Phoenix/.mchp_packs/Microchip/ATmega_DFP/3.6.299/xc8 -Wl,--gc-sections -O0 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -gdwarf-3 -mno-const-data-in-progmem -o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/main.c.o -c /home/Phoenix/MPLABProjects/Projekt1/main.c",
+  "file": "/home/Phoenix/MPLABProjects/Projekt1/main.c",
+  "output": "/home/Phoenix/MPLABProjects/Projekt1/_build/Projekt1/default/CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/main.c.o"
+},
+{
+  "directory": "/home/Phoenix/MPLABProjects/Projekt1/_build/Projekt1/default",
+  "command": "/opt/microchip/xc8/v4.00/bin/xc8-cc -DXPRJ_default=default -D__ATmega328PB__ -c -mcpu=ATmega328PB -x c -mdfp=/home/Phoenix/.mchp_packs/Microchip/ATmega_DFP/3.6.299/xc8 -Wl,--gc-sections -O0 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -gdwarf-3 -mno-const-data-in-progmem -o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/Timer/Timer.c.o -c /home/Phoenix/MPLABProjects/Projekt1/src/Timer/Timer.c",
+  "file": "/home/Phoenix/MPLABProjects/Projekt1/src/Timer/Timer.c",
+  "output": "/home/Phoenix/MPLABProjects/Projekt1/_build/Projekt1/default/CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/Timer/Timer.c.o"
+},
+{
+  "directory": "/home/Phoenix/MPLABProjects/Projekt1/_build/Projekt1/default",
+  "command": "/opt/microchip/xc8/v4.00/bin/xc8-cc -DXPRJ_default=default -D__ATmega328PB__ -c -mcpu=ATmega328PB -x c -mdfp=/home/Phoenix/.mchp_packs/Microchip/ATmega_DFP/3.6.299/xc8 -Wl,--gc-sections -O0 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -gdwarf-3 -mno-const-data-in-progmem -o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/UART/Uart.c.o -c /home/Phoenix/MPLABProjects/Projekt1/src/UART/Uart.c",
+  "file": "/home/Phoenix/MPLABProjects/Projekt1/src/UART/Uart.c",
+  "output": "/home/Phoenix/MPLABProjects/Projekt1/_build/Projekt1/default/CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/UART/Uart.c.o"
+}
+]

@@ -1,0 +1,4 @@
+/home/Phoenix/MPLABProjects/Projekt1/_build/Projekt1/default/CMakeFiles/Projekt1_default_default_XC8_compile.dir
+/home/Phoenix/MPLABProjects/Projekt1/_build/Projekt1/default/CMakeFiles/Projekt1_default_image_nRrZCYK3.dir
+/home/Phoenix/MPLABProjects/Projekt1/_build/Projekt1/default/CMakeFiles/edit_cache.dir
+/home/Phoenix/MPLABProjects/Projekt1/_build/Projekt1/default/CMakeFiles/rebuild_cache.dir

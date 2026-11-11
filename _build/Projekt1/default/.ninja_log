@@ -1,0 +1,5 @@
+# ninja log v7
+1	33	1794310162897129008	CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/main.c.o	7057a1c75ed058ff
+45	60	1794310237675701498	/home/Phoenix/MPLABProjects/Projekt1/out/Projekt1/default.elf	e5fa64adf85ec4b6
+1	36	1794310162898947481	CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/Timer/Timer.c.o	9f73ff590b624b89
+0	45	1794310237630701153	CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/UART/Uart.c.o	d6bc929076b48577
