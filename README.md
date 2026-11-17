@@ -1,4 +1,4 @@
-
+also part of project 2 extended the uart.c/h and main a bit
 # Projekt1
 
 ## Structure
