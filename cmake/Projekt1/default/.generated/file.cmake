@@ -17,6 +17,8 @@ endforeach()
 
 set(Projekt1_default_default_XC8_FILE_TYPE_compile
     "${CMAKE_CURRENT_SOURCE_DIR}/../../../main.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../src/Display/OledDisplayP.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../src/ExternInterupt/ExternInterupt.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/../../../src/Statemachine/Statemachine.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/../../../src/Timer/Timer.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/../../../src/UART/Uart.c")

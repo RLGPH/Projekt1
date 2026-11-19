@@ -1,15 +1,6 @@
-/*
- * Uart.h
- *
- * Created: 15-01-2018 09:45:07
- *  Author: ltpe
- */ 
-
-
 #ifndef UART_H_
 #define UART_H_
 
-//#include "Arduino.h"
 #include <stdio.h>
 #include "../ProjectDefines.h"
 
@@ -26,11 +17,12 @@ typedef void (*Function_Pointer_With_One_CharPointer_Parameter)(char*);
 
 extern void RS232Init_Uart1(void);
 extern int uart1_putch(char ch, FILE* stream);
-extern void RS232Init( void);
+extern void RS232Init(void);
 extern int uart_getch(FILE* stream);
 extern int uart_putch(char ch, FILE* stream);
-extern void Enable_UART_Receive_Interrupt();
-extern void Disable_UART_Receive_Interupt();
+extern void Enable_UART_Receive_Interrupt(void);
+extern void Disable_UART_Receive_Interupt(void);
+extern void Enable_UART1_Receive_Interrupt(void);
 
 void SetupUARTFunctionCallbackPointer(Function_Pointer_With_One_CharPointer_Parameter 
                                       Function_To_Callback);

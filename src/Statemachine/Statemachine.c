@@ -15,6 +15,12 @@ static volatile uint8_t *target_address = NULL;
 static uint8_t bit_position = 0;
 static uint8_t bit_value = 0;
 
+// Callback-funktion som kaldes af UART receive interrupt
+void StateMachine_OnUARTCharReceived(char *ReceivedChar) {
+    rx_char = *ReceivedChar;
+    new_char_received = 1;
+}
+
 // Privat hjælpefunktion til at skifte tilstand og udskrive besked på UART (Punkt 6)
 static void ChangeState(State_t new_state) {
     current_state = new_state;
@@ -46,12 +52,6 @@ static void PrintBinaryByte(uint8_t val) {
 void StateMachine_Init(void) {
     new_char_received = 0;
     ChangeState(Modtag_Adresse);
-}
-
-// Callback-funktion som kaldes af UART receive interrupt
-void StateMachine_OnUARTCharReceived(char *ReceivedChar) {
-    rx_char = *ReceivedChar;
-    new_char_received = 1;
 }
 
 // Kører selve tilstandsmaskinen når der er modtaget et nyt tegn
