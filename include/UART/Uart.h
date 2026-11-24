@@ -6,13 +6,12 @@
 
 typedef void (*Function_Pointer_With_One_CharPointer_Parameter)(char*);
 
-#define BAUD 9600UL
+#define BAUD 115200UL
 
-#define UART_NORMAL_MODE
 #ifdef UART_NORMAL_MODE
-#define MyUBRR (unsigned int)(F_CPU/(16*BAUD) -1)   // normal mode
+#define MyUBRR (unsigned int)(F_CPU/(16*BAUD) - 1)
 #else
-#define MyUBRR (unsigned int)(F_CPU/(8*BAUD) -1)   // *2 mode
+#define MyUBRR (unsigned int)(F_CPU/(8*BAUD) - 1)
 #endif
 
 extern void RS232Init_Uart1(void);
@@ -24,7 +23,6 @@ extern void Enable_UART_Receive_Interrupt(void);
 extern void Disable_UART_Receive_Interupt(void);
 extern void Enable_UART1_Receive_Interrupt(void);
 
-void SetupUARTFunctionCallbackPointer(Function_Pointer_With_One_CharPointer_Parameter 
-                                      Function_To_Callback);
+void SetupUARTFunctionCallbackPointer(Function_Pointer_With_One_CharPointer_Parameter Function_To_Callback);
 
 #endif /* UART_H_ */

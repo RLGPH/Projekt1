@@ -74,6 +74,16 @@ build CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProj
   TARGET_PDB = ""
   TARGET_SUPPORT_DIR = CMakeFiles/Projekt1_default_default_XC8_compile.dir
 
+build CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/RingBuffer/RingBuffer.c.o: C_COMPILER__Projekt1_default_default_XC8_compile_unscanned_ /home/Phoenix/MPLABProjects/Projekt1/src/RingBuffer/RingBuffer.c || cmake_object_order_depends_target_Projekt1_default_default_XC8_compile
+  DEFINES = -DXPRJ_default=default -D__ATmega328PB__
+  DEP_FILE = CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/RingBuffer/RingBuffer.c.o.d
+  FLAGS = -c -mcpu=ATmega328PB -x c -mdfp=/home/Phoenix/.mchp_packs/Microchip/ATmega_DFP/3.6.299/xc8 -Wl,--gc-sections -O0 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -gdwarf-3 -mno-const-data-in-progmem
+  OBJECT_DIR = CMakeFiles/Projekt1_default_default_XC8_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/RingBuffer
+  TARGET_COMPILE_PDB = CMakeFiles/Projekt1_default_default_XC8_compile.dir/
+  TARGET_PDB = ""
+  TARGET_SUPPORT_DIR = CMakeFiles/Projekt1_default_default_XC8_compile.dir
+
 build CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/Statemachine/Statemachine.c.o: C_COMPILER__Projekt1_default_default_XC8_compile_unscanned_ /home/Phoenix/MPLABProjects/Projekt1/src/Statemachine/Statemachine.c || cmake_object_order_depends_target_Projekt1_default_default_XC8_compile
   DEFINES = -DXPRJ_default=default -D__ATmega328PB__
   DEP_FILE = CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/Statemachine/Statemachine.c.o.d
@@ -109,7 +119,7 @@ build CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProj
 #############################################
 # Object library Projekt1_default_default_XC8_compile
 
-build Projekt1_default_default_XC8_compile: phony CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/main.c.o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/Display/OledDisplayP.c.o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/ExternInterupt/ExternInterupt.c.o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/Statemachine/Statemachine.c.o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/Timer/Timer.c.o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/UART/Uart.c.o
+build Projekt1_default_default_XC8_compile: phony CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/main.c.o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/Display/OledDisplayP.c.o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/ExternInterupt/ExternInterupt.c.o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/RingBuffer/RingBuffer.c.o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/Statemachine/Statemachine.c.o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/Timer/Timer.c.o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/UART/Uart.c.o
 
 # =============================================================================
 # Object build statements for EXECUTABLE target Projekt1_default_image_nRrZCYK3
@@ -128,7 +138,7 @@ build cmake_object_order_depends_target_Projekt1_default_image_nRrZCYK3: phony |
 #############################################
 # Link the executable /home/Phoenix/MPLABProjects/Projekt1/out/Projekt1/default.elf
 
-build /home/Phoenix/MPLABProjects/Projekt1/out/Projekt1/default.elf: C_EXECUTABLE_LINKER__Projekt1_default_image_nRrZCYK3_ CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/main.c.o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/Display/OledDisplayP.c.o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/ExternInterupt/ExternInterupt.c.o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/Statemachine/Statemachine.c.o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/Timer/Timer.c.o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/UART/Uart.c.o || Projekt1_default_default_XC8_compile
+build /home/Phoenix/MPLABProjects/Projekt1/out/Projekt1/default.elf: C_EXECUTABLE_LINKER__Projekt1_default_image_nRrZCYK3_ CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/main.c.o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/Display/OledDisplayP.c.o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/ExternInterupt/ExternInterupt.c.o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/RingBuffer/RingBuffer.c.o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/Statemachine/Statemachine.c.o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/Timer/Timer.c.o CMakeFiles/Projekt1_default_default_XC8_compile.dir/home/Phoenix/MPLABProjects/Projekt1/src/UART/Uart.c.o || Projekt1_default_default_XC8_compile
   LINK_FLAGS = -Wl,-Map=mem.map -mcpu=ATmega328PB -Wl,--defsym=__MPLAB_BUILD=1 -mdfp=/home/Phoenix/.mchp_packs/Microchip/ATmega_DFP/3.6.299/xc8 -Wl,--gc-sections -O0 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -gdwarf-3 -mno-const-data-in-progmem -Wl,--memorysummary,memoryfile.xml
   OBJECT_DIR = CMakeFiles/Projekt1_default_image_nRrZCYK3.dir
   POST_BUILD = cd /home/Phoenix/MPLABProjects/Projekt1/out/Projekt1 && /opt/microchip/xc8/v4.00/bin/avr-objcopy -O ihex default.elf default.hex

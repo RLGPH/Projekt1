@@ -1,74 +1,79 @@
 #include "../../include/ExternInteruptP/ExternInteruptP.h"
 #include "../../include/UART/Uart.h"
 #include "../../include/Display/OledDisplayP.h"
+#include "../../include/RingBuffer/RingBuffer.h"
 #include <stdio.h>
 
-// Tracks which edge we are currently waiting for
-// 1 = waiting for rising edge (button press: 0V -> 5V)
-// 0 = waiting for falling edge (button release: 5V -> 0V)
+// 1 = waiting for rising edge, 0 = waiting for falling edge
 static volatile uint8_t waiting_for_rising_edge = 1;
+static volatile uint8_t update_ext_display_flag = 0;
 
-// Flag set by the ISR to notify main() that a valid press occurred
-static volatile uint8_t valid_press_flag = 0;
-
-// Counter for total valid button presses
-static uint32_t ext_int_counter = 0;
+static volatile uint32_t down_int_counter = 0; // Falling edge count
+static volatile uint32_t up_int_counter = 0;   // Rising edge count
 
 void ExternInteruptP_Init(void) {
-    // 1. Configure PD2 (INT0) as an input
+    // Configure YellowLedBit (PB2) as output for External Interrupt toggle
+    DDRB |= (1 << YellowLedBit);
+
+    // Configure PD2 (INT0) as input (external pull-down on button board)
     DDRD &= ~(1 << DDD2);
-    
-    // Make sure internal pull-up is OFF since we have an external 1k pull-down resistor
     PORTD &= ~(1 << PORTD2);
 
-    // 2. Configure EICRA to trigger INT0 on a RISING edge (ISC01 = 1, ISC00 = 1)
+    // Start by triggering on RISING edge (ISC01 = 1, ISC00 = 1)
     EICRA |= (1 << ISC01) | (1 << ISC00);
-
-    // 3. Clear any pending interrupt flag on INT0 before enabling it
     EIFR |= (1 << INTF0);
-
-    // 4. Enable External Interrupt 0 in the External Interrupt Mask Register
     EIMSK |= (1 << INT0);
 }
 
-// Interrupt Service Routine for External Interrupt 0 (PORTD2)
 ISR(INT0_vect) {
+    // Toggle LED on every external interrupt (Opgave 5 Krav 10)
+    PORTB ^= (1 << YellowLedBit);
+
     if (waiting_for_rising_edge == 1) {
-        // Button was pressed (rising edge: 0V -> 5V)
-        valid_press_flag = 1;
+        up_int_counter++;
         waiting_for_rising_edge = 0;
 
-        // Switch EICRA to trigger on FALLING edge next (ISC01 = 1, ISC00 = 0)
+        // Switch to FALLING edge next (ISC01 = 1, ISC00 = 0)
         EICRA |= (1 << ISC01);
         EICRA &= ~(1 << ISC00);
-    } 
-    else {
-        // Button was released (falling edge: 5V -> 0V)
-        // Do NOT count this edge; reset back to waiting for a rising edge
+    } else {
+        down_int_counter++;
         waiting_for_rising_edge = 1;
 
-        // Switch EICRA back to trigger on RISING edge next (ISC01 = 1, ISC00 = 1)
+        // Switch back to RISING edge next (ISC01 = 1, ISC00 = 1)
         EICRA |= (1 << ISC01) | (1 << ISC00);
     }
+
+    update_ext_display_flag = 1;
 }
 
 void ExternInteruptP_Process(void) {
-    if (valid_press_flag == 1) {
-        valid_press_flag = 0; // Reset the flag immediately
-        ext_int_counter++;    // Increment the valid interrupt counter
+    if (update_ext_display_flag) {
+        update_ext_display_flag = 0;
 
-        // 1. Send the message out on BOTH UART0 and UART1 (Requirement 3)
+        uint32_t down_copy, up_copy;
+        uint8_t sreg = SREG;
+        cli();
+        down_copy = down_int_counter;
+        up_copy = up_int_counter;
+        SREG = sreg;
+
+        // Opgave 4 Krav 3: Print interrupt count to UART0 (and UART1 when Ringbuffer test is idle)
         char msg[48];
-        snprintf(msg, sizeof(msg), "\r\nExternal Interrupt Count: %lu\r\n", ext_int_counter);
-
+        snprintf(msg, sizeof(msg), "\r\nExternal Interrupt Count (UP:%lu DOWN:%lu)\r\n", up_copy, down_copy);
         for (uint8_t i = 0; msg[i] != '\0'; i++) {
-            uart_putch(msg[i], NULL);   // Send to UART0 (Direct USB)
-            uart1_putch(msg[i], NULL);  // Send to UART1 (CP2102)
+            uart_putch(msg[i], NULL);
+            if (!RingBuffer_IsRunning()) {
+                uart1_putch(msg[i], NULL);
+            }
         }
 
-                char display_msg[24];
-        snprintf(display_msg, sizeof(display_msg), "COUNT: %lu", ext_int_counter);
-        OledDisplayP_PrintLine(2, 0, display_msg);
+        // Opgave 5 Krav 11 & 12: Update OLED Line 0 & Line 1
+        char line_buf[24];
+        snprintf(line_buf, sizeof(line_buf), "# DOWN INT: %lu", down_copy);
+        OledDisplayP_PrintLine(0, 0, line_buf);
 
+        snprintf(line_buf, sizeof(line_buf), "# UP INT:   %lu", up_copy);
+        OledDisplayP_PrintLine(1, 0, line_buf);
     }
 }
