@@ -25,6 +25,7 @@ static volatile uint8_t last5_count = 0;
 // Overrun tracking
 static volatile uint8_t overrun_flag = 0;
 static volatile uint8_t overrun_lost_byte = 0;
+static volatile uint8_t skip_leading_semicolon = 0;
 
 static void RingBuffer_ResetPointers(void) {
     rb_head = 0;
@@ -53,10 +54,14 @@ void RingBuffer_OnRxByte(uint8_t byte) {
     switch (rb_state) {
         case RB_STATE_WAIT_FOR_COLON:
             if (byte == ':') {
+                RingBuffer_ResetPointers();
                 send_username_flag = 1;
-                rb_state = RB_STATE_WAIT_FOR_SEMICOLON;
+                skip_leading_semicolon = 1;
+                rb_state = RB_STATE_RUNNING;
             }
             break;
+
+
 
         case RB_STATE_WAIT_FOR_SEMICOLON:
             if (byte == ';') {
@@ -73,6 +78,14 @@ void RingBuffer_OnRxByte(uint8_t byte) {
                 RingBuffer_ResetPointers();
                 rb_state = RB_STATE_WAIT_FOR_COLON;
                 return;
+            }
+
+            // Supports v1's leading ';' without dropping v2.0.0's '0'
+            if (skip_leading_semicolon) {
+                skip_leading_semicolon = 0;
+                if (byte == ';') {
+                    return;
+                }
             }
 
             // Record into last-5 history

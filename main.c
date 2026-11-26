@@ -69,7 +69,7 @@ int main(void) {
     // 6. Enable global interrupts
     sei();
 
-    while (1) {
+        while (1) {
         // Opgave 5: Process RingBuffer handshake, overrun reporting, and byte echoing
         RingBuffer_Process();
 
@@ -94,18 +94,12 @@ int main(void) {
                 eeprom_update_dword(&ee_runtime_minutes, total_minutes);
             }
 
-            // Opgave 4 Krav 5: Print "Sekund: X" on UART1 when RingBuffer test is idle
-            if (!RingBuffer_IsRunning()) {
-                char sec_msg[32];
-                snprintf(sec_msg, sizeof(sec_msg), "Sekund: %lu\r\n", total_seconds);
-                for (uint8_t i = 0; sec_msg[i] != '\0'; i++) {
-                    uart1_putch(sec_msg[i], NULL);
-                }
-            }
-
             // Opgave 5 Krav 13: Update active time in seconds on OLED Line 2
             snprintf(time_buf, sizeof(time_buf), "TIME: %lu S", total_seconds);
             OledDisplayP_PrintLine(2, 0, time_buf);
+
+            // Drain any incoming UART bytes so OLED I2C updates never delay sequence completion
+            RingBuffer_Process();
 
             // Opgave 5 Krav 15: Update last 5 RingBuffer bytes on OLED Line 3
             uint8_t last5[5];

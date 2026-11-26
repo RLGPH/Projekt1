@@ -74,7 +74,7 @@ static void I2C0_Init(void) {
     PRR0 &= ~(1 << PRTWI0);                  // Power on TWI0 module
     PORTC |= (1 << PORTC4) | (1 << PORTC5);  // Enable internal pull-ups on PC4 & PC5
     TWSR0 = 0x00;                            // Prescaler = 1
-    TWBR0 = 72;                              // 16 MHz / (16 + 2 * 72 * 1) = 100 kHz I2C clock
+    TWBR0 = 12; // 16 MHz / (16 + 2 * 12 * 1) = 400 kHz Fast I2C
     TWCR0 = (1 << TWEN);                     // Enable TWI0 hardware
 }
 
